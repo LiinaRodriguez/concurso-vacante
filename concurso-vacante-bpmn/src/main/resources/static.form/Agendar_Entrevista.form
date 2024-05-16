@@ -1,0 +1,34 @@
+{
+  "components": [
+    {
+      "subtype": "datetime",
+      "dateLabel": "Fecha de la entrevista:",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_04veosp",
+        "columns": null
+      },
+      "id": "Field_1lqbfyg",
+      "key": "fecha_entrevista",
+      "validate": {
+        "required": true
+      },
+      "disabled": false,
+      "properties": {},
+      "timeLabel": "Hora:",
+      "timeSerializingFormat": "utc_offset",
+      "timeInterval": 15,
+      "disallowPassedDates": true
+    }
+  ],
+  "type": "default",
+  "id": "Agendar_Entrevista",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.20.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 15
+}

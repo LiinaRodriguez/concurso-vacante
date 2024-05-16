@@ -1,0 +1,122 @@
+{
+  "components": [
+    {
+      "label": "Nombre Completo del Solicitante:",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_11ezphz",
+        "columns": null
+      },
+      "id": "Field_19e3fcc",
+      "key": "fullName",
+      "disabled": true,
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "label": "Dirección de correo electrónico:",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1sfhixe",
+        "columns": null
+      },
+      "id": "Field_01kq8d5",
+      "key": "email",
+      "disabled": true,
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Bachillerato",
+          "value": "Bachillerato"
+        },
+        {
+          "label": "Licenciatura",
+          "value": "Licenciatura"
+        },
+        {
+          "label": "Maestría",
+          "value": "Maestria"
+        },
+        {
+          "label": "Doctorado",
+          "value": "Doctorado"
+        }
+      ],
+      "label": "Grado Académico:",
+      "type": "select",
+      "layout": {
+        "row": "Row_15b52c6",
+        "columns": null
+      },
+      "id": "Field_12ycrqm",
+      "key": "education",
+      "defaultValue": "<none>",
+      "validate": {
+        "required": false
+      },
+      "searchable": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Analista de Datos",
+          "value": "AnalistaDeDatos"
+        },
+        {
+          "label": "Desarrollador de Software",
+          "value": "DesarrolladorDeSoftware"
+        },
+        {
+          "label": "Especialista en Marketing Digital",
+          "value": "Especialista en Marketing Digital"
+        },
+        {
+          "label": "Gerente de Proyectos",
+          "value": "Gerente de Proyectos"
+        }
+      ],
+      "label": "Cargo a aplicar:",
+      "type": "select",
+      "layout": {
+        "row": "Row_1wikjog",
+        "columns": null
+      },
+      "id": "Field_1omfak1",
+      "key": "role",
+      "disabled": true,
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "label": "Años de experiencia previa en el cargo",
+      "type": "number",
+      "layout": {
+        "row": "Row_1wikjog",
+        "columns": null
+      },
+      "id": "Field_1du3453",
+      "key": "experience",
+      "validate": {
+        "required": false,
+        "min": 0
+      },
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "revisar_hoja_vida",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.20.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 15
+}

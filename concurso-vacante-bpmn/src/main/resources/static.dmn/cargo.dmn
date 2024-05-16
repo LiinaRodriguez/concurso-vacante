@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="determinarsalario" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="detSalario" name="Cargo" camunda:historyTimeToLive="300">
+    <decisionTable id="DecisionTable_1hyz3vl">
+      <input id="Input_1" biodi:width="397" camunda:inputVariable="cargo">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="salario" typeRef="long" />
+      <rule id="DecisionRule_1ji41an">
+        <inputEntry id="UnaryTests_0dh7aps">
+          <text>"Analista de Datos"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bczoki">
+          <text>2730000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ger8v5">
+        <inputEntry id="UnaryTests_05dml5l">
+          <text>"Desarrollador de Software"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08cpmj0">
+          <text>3800000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1502504">
+        <inputEntry id="UnaryTests_1b2tfrr">
+          <text>"Especialista en Marketing Digital"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g57m5m">
+          <text>2500000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09je2xc">
+        <inputEntry id="UnaryTests_0i5q6oi">
+          <text>"Gerente de Proyectos"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00do1r2">
+          <text>3230000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="detSalario">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

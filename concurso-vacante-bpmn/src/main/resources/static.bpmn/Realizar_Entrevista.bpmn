@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1817u93" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:collaboration id="Collaboration_09hhlse">
+    <bpmn:participant id="Participant_1sgikcw" name="Recursos Humanos" processRef="Realizar_Entrevista" />
+  </bpmn:collaboration>
+  <bpmn:process id="Realizar_Entrevista" name="Realizar Entrevista" isExecutable="true" camunda:historyTimeToLive="300">
+    <bpmn:laneSet id="LaneSet_0b3xy3g">
+      <bpmn:lane id="Lane_0pei7yg" name="Psicologo">
+        <bpmn:flowNodeRef>Gateway_0986mp4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_02fes9p</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0mo56c0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Entrevistar_Candidato</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1idx6q5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0y5t8di" name="Abogado">
+        <bpmn:flowNodeRef>Activity_06angfg</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:parallelGateway id="Gateway_0986mp4">
+      <bpmn:incoming>Flow_1fdbg10</bpmn:incoming>
+      <bpmn:outgoing>Flow_15wao5u</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1jwuggt</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="Activity_02fes9p" name="Agendar Entrevista">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="fecha_entrevista" label="fecha_entrevista" type="date" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_15wao5u</bpmn:incoming>
+      <bpmn:outgoing>Flow_1on8lpg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="Gateway_0mo56c0">
+      <bpmn:incoming>Flow_1o7yb93</bpmn:incoming>
+      <bpmn:incoming>Flow_1on8lpg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yrx4qx</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_1fdbg10" sourceRef="StartEvent_1" targetRef="Gateway_0986mp4" />
+    <bpmn:sequenceFlow id="Flow_15wao5u" sourceRef="Gateway_0986mp4" targetRef="Activity_02fes9p" />
+    <bpmn:sequenceFlow id="Flow_1jwuggt" sourceRef="Gateway_0986mp4" targetRef="Activity_06angfg" />
+    <bpmn:sequenceFlow id="Flow_1on8lpg" sourceRef="Activity_02fes9p" targetRef="Gateway_0mo56c0" />
+    <bpmn:sequenceFlow id="Flow_1yrx4qx" sourceRef="Gateway_0mo56c0" targetRef="Entrevistar_Candidato" />
+    <bpmn:sequenceFlow id="Flow_1o7yb93" sourceRef="Activity_06angfg" targetRef="Gateway_0mo56c0" />
+    <bpmn:userTask id="Entrevistar_Candidato" name="Realizar Entrevista" camunda:formRef="resultado_entrevista_" camunda:formRefBinding="latest">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1yrx4qx</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yhxttp</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_06angfg" name="Revisar Hoja de vida" camunda:formRef="revisar_hoja_vida" camunda:formRefBinding="latest">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1jwuggt</bpmn:incoming>
+      <bpmn:outgoing>Flow_1o7yb93</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0yhxttp" sourceRef="Entrevistar_Candidato" targetRef="Event_1idx6q5" />
+    <bpmn:startEvent id="StartEvent_1" name="Solicitud Entrevista Recibida">
+      <bpmn:outgoing>Flow_1fdbg10</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1idx6q5" name="Entrevista Realizada">
+      <bpmn:incoming>Flow_0yhxttp</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_09hhlse">
+      <bpmndi:BPMNShape id="Participant_1sgikcw_di" bpmnElement="Participant_1sgikcw" isHorizontal="true">
+        <dc:Bounds x="160" y="90" width="888" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0y5t8di_di" bpmnElement="Lane_0y5t8di" isHorizontal="true">
+        <dc:Bounds x="190" y="215" width="858" height="125" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0pei7yg_di" bpmnElement="Lane_0pei7yg" isHorizontal="true">
+        <dc:Bounds x="190" y="90" width="858" height="125" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1m4yys9_di" bpmnElement="Gateway_0986mp4">
+        <dc:Bounds x="315" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hcophs_di" bpmnElement="Activity_02fes9p">
+        <dc:Bounds x="440" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0bjkvoq_di" bpmnElement="Gateway_0mo56c0">
+        <dc:Bounds x="605" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wenxio_di" bpmnElement="Entrevistar_Candidato">
+        <dc:Bounds x="730" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yvosq1_di" bpmnElement="Activity_06angfg">
+        <dc:Bounds x="440" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="242" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="238" y="175" width="49" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1idx6q5_di" bpmnElement="Event_1idx6q5">
+        <dc:Bounds x="932" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="926" y="175" width="49" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1fdbg10_di" bpmnElement="Flow_1fdbg10">
+        <di:waypoint x="278" y="150" />
+        <di:waypoint x="315" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15wao5u_di" bpmnElement="Flow_15wao5u">
+        <di:waypoint x="365" y="150" />
+        <di:waypoint x="440" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jwuggt_di" bpmnElement="Flow_1jwuggt">
+        <di:waypoint x="340" y="175" />
+        <di:waypoint x="340" y="270" />
+        <di:waypoint x="440" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1on8lpg_di" bpmnElement="Flow_1on8lpg">
+        <di:waypoint x="540" y="150" />
+        <di:waypoint x="605" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yrx4qx_di" bpmnElement="Flow_1yrx4qx">
+        <di:waypoint x="655" y="150" />
+        <di:waypoint x="730" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o7yb93_di" bpmnElement="Flow_1o7yb93">
+        <di:waypoint x="540" y="270" />
+        <di:waypoint x="630" y="270" />
+        <di:waypoint x="630" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yhxttp_di" bpmnElement="Flow_0yhxttp">
+        <di:waypoint x="830" y="150" />
+        <di:waypoint x="932" y="150" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

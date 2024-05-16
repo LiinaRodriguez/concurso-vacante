@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="ex" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="experiencia" name="experiencia" camunda:historyTimeToLive="300">
+    <decisionTable id="DecisionTable_0wvjwqv">
+      <input id="Input_1" label="Experiencia" camunda:inputVariable="AnosCargo">
+        <inputExpression id="InputExpression_1" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="mult_experiencia" typeRef="double" biodi:width="192" />
+      <rule id="DecisionRule_0vfpkp7">
+        <inputEntry id="UnaryTests_03phimj">
+          <text>&lt;1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1juwkzp">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b1t5fk">
+        <inputEntry id="UnaryTests_1mq4w89">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1owcf2m">
+          <text>1.1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_146g2my">
+        <inputEntry id="UnaryTests_0k3oq7h">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xm85o7">
+          <text>1.2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j3znp1">
+        <inputEntry id="UnaryTests_1ooci0f">
+          <text>4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17buazo">
+          <text>1.3</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1a840vv">
+        <inputEntry id="UnaryTests_1yyz0in">
+          <text>&gt;5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e6wp9j">
+          <text>1.5</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="experiencia">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="determinarestudios" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="estudios" name="estudios" camunda:historyTimeToLive="300">
+    <decisionTable id="DecisionTable_1b8jhsm">
+      <input id="Input_1" label="Estudio" camunda:inputVariable="education">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Multiplicador" name="mult_estudio" typeRef="double" />
+      <rule id="DecisionRule_0qnhk8n">
+        <inputEntry id="UnaryTests_1ee0f2p">
+          <text>"Bachillerato"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ukshyu">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sjewi3">
+        <inputEntry id="UnaryTests_1ldbxhd">
+          <text>"Licenciatura"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dqedgt">
+          <text>1.2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xj1gef">
+        <inputEntry id="UnaryTests_0bybsfx">
+          <text>"Maestria"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zqlvdb">
+          <text>1.5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12tbe3t">
+        <inputEntry id="UnaryTests_0u6tmj7">
+          <text>"Doctorado"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13alvr8">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="estudios">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Job Application">
+    <meta name="author" content="">
+    <link rel="shortcut icon" th:href="@{/img/portfolio.svg}"
+          type="image/x-icon">
+    <title>Apply for a Job </title>
+</head>
+
+<body>
+    <nav class="navbar" th:fragment="navbar">
+        <ul class="nav-list">
+            <li class="nav-item active"><a href="/" ><span>HOME</span></a></li>
+            <li class="nav-item"><a href="/applicationform" ><span>APPLY FOR A JOB</span></a></li>
+            <li class="nav-item"><a href="/confirmapplication"> <span>CONFIRM YOUR APPLICATION</span> </a> </li>
+        </ul>
+    </nav>
+    <div class="container" th:fragment="content">
+         <div th:include="${content}"></div>
+    </div>
+
+</body>
+</html>

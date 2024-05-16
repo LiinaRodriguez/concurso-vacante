@@ -1,0 +1,46 @@
+{
+  "components": [
+    {
+      "label": "Nombre",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ojkpeu",
+        "columns": null
+      },
+      "id": "Field_04cump1",
+      "key": "fullName",
+      "disabled": true
+    },
+    {
+      "label": "Cargo",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1vv9bvn",
+        "columns": null
+      },
+      "id": "Field_1dxjcos",
+      "key": "role",
+      "disabled": true
+    },
+    {
+      "label": "Salario Propuesto",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0j6ejts",
+        "columns": null
+      },
+      "id": "Field_11izajx",
+      "key": "salarioPropuesto",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Hacer_Oferta",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.20.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.20.0",
+  "schemaVersion": 15
+}

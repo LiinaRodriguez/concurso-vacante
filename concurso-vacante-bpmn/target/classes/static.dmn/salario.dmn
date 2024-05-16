@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_0s04tfn" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="detSalarioBase" name="detSalarioBase" camunda:historyTimeToLive="1">
+    <decisionTable id="DecisionTable_1j128z0" hitPolicy="FIRST">
+      <input id="Input_1" label="Cargo" biodi:width="293" camunda:inputVariable="role">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0nti1qr" label="Experiencia" camunda:inputVariable="experience">
+        <inputExpression id="LiteralExpression_13mpogj" typeRef="long">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Salario" name="salario" typeRef="long" biodi:width="192" />
+      <rule id="DecisionRule_1ji9ftg">
+        <inputEntry id="UnaryTests_0z0hp9d">
+          <text>any([true])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sm1svm">
+          <text>&lt;1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qe5qvo">
+          <text>1700000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0u0tkj1">
+        <inputEntry id="UnaryTests_0t0vh2w">
+          <text>"AnalistaDeDatos"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0htavo4">
+          <text>[1..3]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x7s5uf">
+          <text>2530000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f0czga">
+        <inputEntry id="UnaryTests_19jd314">
+          <text>"DesarrolladorDeSoftware"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dw4jq1">
+          <text>[1..3]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h4iq4z">
+          <text>3600000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bdxlaw">
+        <inputEntry id="UnaryTests_0ri2df6">
+          <text>"EspecialistaenMarketingDigital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wkti1c">
+          <text>[1..3]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_052np62">
+          <text>2300000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1akg3ce">
+        <inputEntry id="UnaryTests_0me3q07">
+          <text>"GerentedeProyectos"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vp1wu0">
+          <text>[1..3]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w2uccu">
+          <text>3030000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03afbpo">
+        <inputEntry id="UnaryTests_00llvg3">
+          <text>"AnalistDeDatos"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_095io02">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c5cvhe">
+          <text>2930000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jkj5qp">
+        <inputEntry id="UnaryTests_0wc76t0">
+          <text>"DesarrolladorDeSoftware"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fy7vsq">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0704lqx">
+          <text>4000000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hahhfc">
+        <inputEntry id="UnaryTests_0tm20wu">
+          <text>"EspecialistaenMarketingDigital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0avru6q">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1twetc7">
+          <text>2700000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06nbuqj">
+        <inputEntry id="UnaryTests_0x9w7u0">
+          <text>"GerentedeProyectos"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xl0o1o">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0596nh0">
+          <text>3430000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="detSalarioBase">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

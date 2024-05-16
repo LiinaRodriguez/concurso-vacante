@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en " >
+<head>
+
+    <link th:href="@{/css/form.css}" rel="stylesheet">
+    <meta th:include="layout/layout :: head"></meta>
+    <title>Form</title>
+</head>
+<body>
+<div th:replace="layout/layout :: navbar"></div>
+    <div>
+
+
+    <section class="form" >
+        <h2 class="title">Application <span class="form-title">Form</span></h2>
+        <form id="formId" action="/jobapplication/create" method="post" enctype="multipart/form-data"  >
+
+            <div class="informacion-personal form-section" th:if="${user != null}">
+                <label for="fullName" >Nombre completo</label>
+                <input id="fullName" th:value="${user.getFullName() != null ? user.getFullName():'Diego V.'}" name="user.fullName" placeholder="John Anderson" type="text">
+
+                <label for="email">Correo electrónico</label>
+                <input id="email" name="user.email" placeholder="johnanderson@example.com" type="email" th:value="${user.getEmail() != null ? user.getEmail():'default@email.com'}">
+
+                <label for="phoneNumber">Número telefónico</label>
+                <input id="phoneNumber" th:value="${user.getPhoneNumber() != null ? user.getPhoneNumber():'3209786543'}" name="user.phoneNumber" placeholder="312 000 00 00" type="text">
+            </div>
+            <div class="educacion-experiencia form-section" th:if="${jobApplication != null}" >
+                <label for="education"> Estudios realizado  </label>
+                <select id="education" th:name="user.education">
+                    <option th:value="Bachillerato" >Bachillerato</option>
+                    <option th:value="Licenciatura" >Licenciatura</option>
+                    <option th:value="Maestria" >Maestría</option>
+                    <option th:value="Doctorado" >Doctorado</option>
+                </select>
+
+                <h3>Seleccione el rol al que desea aplicar</h3>
+
+                <label for="role"> Rol a aplicar</label>
+                <select id="role" th:name="role">
+                    <option th:value="DesarrolladorDeSoftware"  >Desarrollador de software</option>
+                    <option th:value="AnalistaDeDatos" >Analista de Datos</option>
+                    <option th:value="EspecialistaenMarketingDigital"  >Especialista en Marketing Digital</option>
+                    <option th:value="GerentedeProyectos" >Gerente de Proyectos</option>
+                </select>
+
+                <label for="experience">Experiencia</label>
+                <select id="experience" th:name="experience">
+                    <option th:value="0" ><1 año</option>
+                    <option th:value="1" >1 año</option>
+                    <option th:value="2" >2 años</option>
+                    <option th:value="3" >3 años</option>
+                    <option th:value="4" >4 años</option>
+                    <option th:value="5" >5 años</option>
+                </select>
+                <!--<label class="file-label" for="file"> Subir archivo</label>
+                <input name="file" id="file" class="input-file" type="file" > -->
+                <p>Al momento de enviar el formulario esta acordando con nuestros terminos y condiciones,
+                    tambien autoriza para enviar correos electrónicos a la dirección proporcionada</p>
+                <input class="submit-btn" type="submit" value="Enviar">
+            </div>
+        </form>
+
+    </section>
+    </div>
+</body>
+</html>

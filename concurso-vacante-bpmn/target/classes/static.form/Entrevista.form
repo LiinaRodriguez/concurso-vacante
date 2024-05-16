@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "label": "Entrevista realizada a",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wwdqcv",
+        "columns": null
+      },
+      "id": "Field_0gj9vsc",
+      "key": "fullName",
+      "disabled": true
+    },
+    {
+      "label": "El día",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1pijdwt",
+        "columns": null
+      },
+      "id": "Field_022z7xv",
+      "key": "fecha_entrevista",
+      "disabled": true
+    },
+    {
+      "label": "Para el cargo de:",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1cozw8r",
+        "columns": null
+      },
+      "id": "Field_1r5z1j8",
+      "key": "role",
+      "disabled": true
+    },
+    {
+      "label": "Entrevista aprobada",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1sbzcwm",
+        "columns": null
+      },
+      "id": "Field_18c9tgn",
+      "key": "Resultado"
+    }
+  ],
+  "type": "default",
+  "id": "resultado_entrevista_",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.20.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.20.0",
+  "schemaVersion": 15
+}

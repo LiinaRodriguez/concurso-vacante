@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en " >
+<head>
+
+    <link th:href="@{/css/form.css}" rel="stylesheet">
+    <meta th:include="layout/layout :: head"></meta>
+    <title>Confirm application</title>
+</head>
+<body>
+<div th:replace="layout/layout :: navbar"></div>
+<div>
+    <div class="">
+        <form id="routing" method="get">
+            <table class="" id="creditTable">
+                <thead>
+                <tr class="">
+                    <th scope="col">Application ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Count Reviews</th>
+                    <th scope="col">State</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class=""  th:data-job-application="${jobApplication}">
+                    <td><span th:text="${jobApplication.processId}"></span></td>
+                    <td><span th:text="${jobApplication.getUser().getFullName()}"></span></td>
+                    <td><span th:text="${jobApplication.getUser().getEmail()}"></span></td>
+                    <td><span th:text="${jobApplication.getRole()}"></span></td>
+                    <td><span th:text="${jobApplication.getCountReviewJA()}"></span></td>
+                    <td><span th:text="${jobApplication.status}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <input type="hidden" name="taskId" id="taskId" />
+
+            <div class="">
+                <button  class="confirm-btn" id="confirmRequest" type="submit" onclick="completeTask()">
+
+                    <span>Confirm Application</span>
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<script th:src="@{/js/completeApplication.js}"></script>
+</body>
+</html>
