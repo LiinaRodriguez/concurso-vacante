@@ -13,5 +13,4 @@ public class JobApplicationDTO {
     private String experience;
     private Long countReviewJA;
     private User user;
-    //private Long applicantId;
 }

@@ -172,8 +172,13 @@ public class User_FilAppFor implements IApplicantService {
             try{
                 ResponseEntity<Map> response = restTemplate.postForEntity("http://localhost:9000/engine-rest"+"/task/"+taskId+"/complete", requestEntity, Map.class);
 
-                String subProcessId = getSubProcessInstanceById(processId);
-                if(subProcessId != null){
+                Map<String, Object> processVariables = getProcessVariablesByProcessId(processId);
+                Map<String, Object> cargoDisponibleMap = (Map<String, Object>) processVariables.get("CargoDisponible");
+                String disponibilidad = String.valueOf(cargoDisponibleMap.get("value"));
+
+                System.out.println("Disponibilidad de cargo: " + disponibilidad);
+                if (disponibilidad == "true"){
+                    String subProcessId = getSubProcessInstanceById(processId);
                     TaskInfoDTO taskInfoApi = getTaskInfoByProcessIdWithApi(subProcessId);
                     setAssignee(taskInfoApi.getTaskId(), "rrhh");
                     updateReviewAndStatus(processId, subProcessId,"Revisar Vacante");
@@ -181,7 +186,6 @@ public class User_FilAppFor implements IApplicantService {
                     JobApplication jobApplication = jobApplicationService.getJobApplicationByProcessId(subProcessId);
                     jobApplication.setStatus(taskInfoApi.getTaskName());
                     jobApplicationService.updateJobApplication(jobApplication.getIdApplication(), jobApplication);
-
                 }else{
                     System.out.println("Vacante cerrada");
                 }
@@ -200,47 +204,27 @@ public class User_FilAppFor implements IApplicantService {
 
     }
 
-    public void messageEvent(String processId) {
-        String messageName = "hayIncosistencias";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Content-Type", "application/json");
-
-        Map<String, Object> processVariables = new HashMap<>();
-        processVariables.put("inconsistenciasSubsanadas", Map.of("value", true, "type", "boolean"));
-
-        Map<String, Object> requestBodyMap = new HashMap<>();
-        requestBodyMap.put("messageName", messageName);
-        requestBodyMap.put("businessKey", processId);
-        requestBodyMap.put("processVariables", processVariables);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String requestBody;
+    public Map<String, Object> getProcessVariablesByProcessId(String processId){
         try {
-            requestBody = objectMapper.writeValueAsString(requestBodyMap);
-        } catch (JsonProcessingException e) {
-            System.err.println("error converting request body to JSON");
-            return;
-        }
+            ResponseEntity<Map<String, Object>> response = restTemplate
+                    .exchange(camundaUrl + "process-instance/" + processId + "/variables",
+                            HttpMethod.GET,
+                            null,
+                            new ParameterizedTypeReference<Map<String, Object>>() {});
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+            Map<String, Object> processVariables = response.getBody();
 
-        try {
-            ResponseEntity<String> responseEntity = restTemplate.exchange(camundaUrl+"/message", HttpMethod.POST, requestEntity, String.class);
-            System.out.println("Message event done. BusinessID: "+processId);
-            updateReviewAndStatus(processId, processId,"Revisar detalles de solicitud");
+            if (processVariables != null && !processVariables.isEmpty()) {
+                return processVariables;
+            } else {
+                System.err.println("Process variables not found for process: " + processId);
+                return null;
+            }
         } catch (HttpClientErrorException e) {
             String errorMessage = e.getResponseBodyAsString();
             System.err.println("Error with Camunda request: " + errorMessage);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return null;
         }
-    }
-
-    public Long getCountReview(String processId) {
-        JobApplication jobApplication = jobApplicationService.getJobApplicationByProcessId(processId);
-        return jobApplication.getCountReviewJA();
     }
 
     public void updateReviewAndStatus(String processId, String subProcessId, String status) throws SQLException {

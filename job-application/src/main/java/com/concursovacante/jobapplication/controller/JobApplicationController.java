@@ -25,7 +25,6 @@ public class JobApplicationController {
     private final JobApplicationServiceImpl jobApplicationService;
     private final UserServiceImpl userService;
     private final User_FilAppFor applicantService;
-
     @PostMapping("/create")
     public RedirectView createJobApplication(@ModelAttribute JobApplicationDTO jobApplicationDTO,
                                              RedirectAttributes redirectAttributes) throws IOException {

@@ -28,9 +28,4 @@ public class ProcessController {
         return "/index";
     }
 
-    @GetMapping("/message-event")
-    public String messageEvent(@RequestParam(name = "taskId") String taskId){
-        applicant.messageEvent(taskId);
-        return "redirect:/view-credit";
-    }
 }

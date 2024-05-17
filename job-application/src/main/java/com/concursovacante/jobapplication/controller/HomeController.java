@@ -1,6 +1,7 @@
 package com.concursovacante.jobapplication.controller;
 
 import com.concursovacante.jobapplication.model.JobApplication;
+import com.concursovacante.jobapplication.dto.JobApplicationDTO;
 import com.concursovacante.jobapplication.model.User;
 import com.concursovacante.jobapplication.service.impl.JobApplicationServiceImpl;
 import com.concursovacante.jobapplication.service.impl.UserServiceImpl;
@@ -37,11 +38,11 @@ public class HomeController {
     return "views/applicationForm";
     }
     @GetMapping("/confirmapplication")
-    public String confirmApplication(@RequestParam (name = "applicantId", required = false) Long applicantId, Model model){
+    public String confirmApplication( Model model){
 
         List<JobApplication> jobApplications = jobApplicationService.getAllJobApplications();
 
-        applicantId = jobApplications.get(jobApplications.size()-1).getUser().getId();
+        Long applicantId = jobApplications.get(jobApplications.size()-1).getUser().getId();
 
         System.out.println(applicantId);
 

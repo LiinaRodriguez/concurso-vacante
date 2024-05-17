@@ -209,7 +209,7 @@
         <camunda:formData>
           <camunda:formField id="fullName" label="El candidato:" type="string" defaultValue="${fullName}" />
           <camunda:formField id="noti_oferta_rechazada" label="Estado de oferta: " type="string" defaultValue="Ha rechazado la oferta" />
-          <camunda:formField id="role" label="Para el cargo:" type="string" defaultValue="${cargo}" />
+          <camunda:formField id="role" label="Para el cargo:" type="string" defaultValue="${role}" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1c7gi7n</bpmn:incoming>
